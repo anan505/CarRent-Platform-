@@ -1,0 +1,16 @@
+{% extends "homepage.html" %}
+{% block content %}
+    {% for c in posts %}
+    <div class="col-md-6">
+        <article class="media content-section">
+          <div class="media-body">
+            <h2><a class="article-title" href="/{{ c.ISIN }}">{{ c.name }}</a></h2>
+            <p class="article-content">{{ c.city }}, {{c.st}}</p>
+          </div>
+        </article>
+    </div>
+    {% endfor %}
+{% endblock content %}
+
+
+

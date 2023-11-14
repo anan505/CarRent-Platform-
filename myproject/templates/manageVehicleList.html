@@ -1,0 +1,54 @@
+{% extends "homepage.html" %}
+{% block content %}
+<div style="width:800px;?border-width:50px;">
+		<a class="dropdown-item" href="/manage/{{ISIN}}/" style ="background-color:#85ABBC;width:100px;height:100px;display:inline;color:#FDFDFD;">vehicle list</a>
+		<a class="dropdown-item" href="/addCar/{{ISIN}}/" style ="background-color:#B0C9CD;width:100px;height:100px;display:inline;color:#FDFDFD;">add car</a>
+		<a class="dropdown-item" href="/addTruck/{{ISIN}}/" style ="background-color:#B0C9CD;width:100px;height:100px;display:inline;color:#FDFDFD;">add pickup truck</a>
+</div>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+    <div class="col-md-12">
+    <h2><p class="article-title">CAR</p></h2>
+    </div>
+    {% for v in posts1 %}
+     <div class="col-md-6">
+        <article class="media content-section">
+          <div class="media-body">
+          <div style = "float:right;">
+              <a class="dropdown-item"  href="/car/update/{{v.ISIN}}/{{v.v_id}}/" style ="background-color:#929568;width:95px;height:35px;color:#FDFDFD;border-radius: 30%;display:inline;">update</a>
+              <a class="dropdown-item"  href="/vehicle/delete/{{v.ISIN}}/{{v.v_id}}/" style ="background-color:#8E624F;width:95px;height:35px;color:#FDFDFD;border-radius: 30%;display:inline;">delete</a>
+            </div>
+          <div class="article-metadata">
+            <p class="article-title">{{ v.brand }}</p>
+          </div>
+            <h2><p class="article-title">{{ v.model }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  seats = {{ v.seat_num }}</p></h2>
+            <p class="article-content">{{ v.price }}  $/day</p>
+            <p class="article-content">YEAR: {{ v.year}}</p>
+            <p class="article-content">{{v.v_id}}</p>
+          </div>
+        </article>
+    </div>
+    {% endfor %}
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+     <div class="col-md-12">
+    <h2><p class="article-title">PICKUP TRUCK</p></h2>
+    </div>
+       {% for v in posts2 %}
+       <div class="col-md-6">
+          <article class="media content-section">
+            <div class="media-body">
+             <div style = "float:right;">
+                 <a class="dropdown-item"  href="/truck/update/{{v.ISIN}}/{{v.v_id}}/" style ="background-color:#929568;width:95px;height:35px;color:#FDFDFD;border-radius: 30%;display:inline;">update</a>
+                 <a class="dropdown-item"  href="/vehicle/delete/{{v.ISIN}}/{{v.v_id}}/" style ="background-color:#8E624F;width:95px;height:35px;color:#FDFDFD;border-radius: 30%;display:inline;">delete</a>
+               </div>
+            <div class="article-metadata">
+              <p class="article-title">{{ v.brand }}</p>
+            </div>
+              <h2><p class="article-title">{{ v.model }}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; capacity = {{ v.load_capacity }} kg</p></h2>
+              <p class="article-content">{{ v.price }}  $/day</p>
+              <p class="article-content">YEAR: {{ v.year}}</p>
+              <p class="article-content">{{v.v_id}}</p>
+            </div>
+          </article>
+      </div>
+       {% endfor %}
+{% endblock content %}

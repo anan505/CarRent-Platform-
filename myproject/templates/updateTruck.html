@@ -1,0 +1,64 @@
+{% extends "homepage.html" %}
+{% block content %}
+<div style="width:800px;?border-width:50px;">
+		<a class="dropdown-item" href="/manage/{{ISIN}}/" style ="background-color:#B0C9CD;width:100px;height:100px;display:inline;color:#FDFDFD;">vehicle list</a>
+		<a class="dropdown-item" href="/addCar/{{ISIN}}/" style ="background-color:#B0C9CD;width:100px;height:100px;display:inline;color:#FDFDFD;">add car</a>
+		<a class="dropdown-item" href="/addTruck/{{ISIN}}/" style ="background-color:#B0C9CD;width:100px;height:100px;display:inline;color:#FDFDFD;">add pickup truck</a>
+</div>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+<div class="col-md-6">
+    <div class="content-section">
+    {% for v in post%}
+        <h2><p class="article-title">{{v.v_id}}</p></h2>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        
+        <p class="article-content">brand: {{ v.brand }}  </p>
+        
+        <p class="article-content">model: {{ v.model }}  </p>
+        
+        <p class="article-content">year: {{ v.year }}  </p>
+        
+        <p class="article-content">price: {{ v.price }}  </p>
+        
+        <p class="article-content">load capacity: {{ v.load_capacity }}  </p>
+   {% endfor %}
+   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="form-group">
+                {{ form.feature.label(class="form-control-label") }}
+
+                {% if form.feature.errors %}
+                    {{ form.feature(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.feature.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.feature(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.value.label(class="form-control-label") }}
+
+                {% if form.value.errors %}
+                    {{ form.value(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.value.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.value(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+   </div>
+</div>
+{% endblock content %}

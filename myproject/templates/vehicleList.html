@@ -1,0 +1,45 @@
+{% extends "homepage.html" %}
+{% block content %}
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+    <div class="col-md-12">
+    <h2><p class="article-title">CAR</p></h2>
+    </div>
+    {% for v in posts1 %}
+     <div class="col-md-4">
+        <article class="media content-section">
+          <div class="media-body">
+          <div class="article-metadata">
+            <p class="article-title">{{ v.brand }}</p>
+          </div>
+            <h2><p class="article-title">{{ v.model }} </p></h2>
+             <p class="article-content">{{ v.price }}  $/day</p>
+            <p class="article-content"> seats = {{ v.seat_num }}</p>
+            <p class="article-content">YEAR: {{ v.year}}</p>
+            <p class="article-content">{{v.v_id}}</p>
+          </div>
+        </article>
+    </div>
+    {% endfor %}
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+     <div class="col-md-12">
+    <h2><p class="article-title">PICKUP TRUCK</p></h2>
+    </div>
+       {% for v in posts2 %}
+       <div class="col-md-4">
+          <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+              <p class="article-title">{{ v.brand }}</p>
+            </div>
+              <h2><p class="article-title">{{ v.model }}</p></h2>
+              <p class="article-content">{{ v.price }}  $/day</p>
+              <p class="article-content">capacity = {{ v.load_capacity }} kg</p>
+              <p class="article-content">YEAR: {{ v.year}}</p>
+              <p class="article-content">{{v.v_id}}</p>
+            </div>
+          </article>
+      </div>
+       {% endfor %}
+{% endblock content %}
+
+

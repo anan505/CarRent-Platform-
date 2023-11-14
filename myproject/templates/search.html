@@ -1,0 +1,53 @@
+{% extends "homepage.html" %}
+{% block content %}
+<div style="width:800px;?border-width:50px;">
+		<a class="dropdown-item" href="/searchCompany "style ="background-color:#85ABBC;width:100px;height:100px;display:inline;color:#FDFDFD;">company</a>
+		<a class="dropdown-item" href="/searchCar" style ="background-color:#B0C9CD;width:100px;height:100px;display:inline;color:#FDFDFD;">car</a>
+		<a class="dropdown-item" href="/searchPickup" style ="background-color:#B0C9CD;width:100px;height:100px;display:inline;color:#FDFDFD;">pickup</a>
+</div>
+ <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+<div class="col-md-12">
+    
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="form-group">
+                {{ form.question.label(class="form-control-label") }}
+
+                {% if form.question.errors %}
+                    {{ form.question(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.question.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.question(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+ </div>   
+    {% for v in post%}
+    <div class="col-md-4">
+    <div class="content-section">
+        <h2><p class="article-title">{{v.name}}</p></h2>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        <h4><p class="article-content">count: {{ v.ans }}  </p></h4>
+        
+        <p class="article-content">city: {{ v.city }}  </p>
+        
+        <p class="article-content">state: {{ v.st }}  </p>
+        
+        <p class="article-content">ISIN: {{ v.ISIN }}  </p>
+    </div> 
+    </div>  
+   {% endfor %}
+   <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+  
+   
+
+{% endblock content %}

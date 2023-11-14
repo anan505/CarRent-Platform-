@@ -1,0 +1,34 @@
+{% extends "homepage.html" %}
+{% block content %}
+
+<div style="width:400px;?border-width:50px;">
+		<a class="dropdown-item" href="/booking/{{email}}/" style ="background-color:#B0C9CD;width:100px;height:100px;display:inline;color:#FDFDFD;">booking list</a>
+		<a class="dropdown-item" href="/chooseCarList/{{email}}/" style ="background-color:#B0C9CD;width:100px;height:100px;display:inline;color:#FDFDFD;">car</a>
+		<a class="dropdown-item" href="/chooseTruckList/{{email}}/" style ="background-color:#85ABBC;width:100px;height:100px;display:inline;color:#FDFDFD;">pickup truck</a>
+</div>
+
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+    <div class="col-md-12">
+    <h2><p class="article-title">PICKUP TRUCK</p></h2>
+    </div>
+    {% for v in post%}
+     <div class="col-md-4">
+        <article class="media content-section">
+          <div class="media-body">
+          <div class="article-metadata">
+           <div style = "float:right;">
+                   <a class="dropdown-item"  href="/chooseCarList/select/{{email}}/{{v.v_id}}" style ="background-color:#85ABBC;width:95px;height:35px;color:#FDFDFD;border-radius: 30%;display:inline;">select</a>
+            </div>
+            <p class="article-title">{{ v.brand }}</p>
+          </div>
+            <h2><p class="article-title">{{ v.model }}</p></h2>
+            <h4><p class="article-title">capacity: {{ v.load_capacity }} kg</p></h4>
+            <p class="article-content">{{ v.price }}  $/day</p>
+            <p class="article-content">YEAR: {{ v.year}}</p>
+            <h3><p class="article-content">{{v.name}}</p></h3>
+            <p class="article-content">{{v.city}}, {{v.st}}</p>
+          </div>
+        </article>
+    </div>
+    {% endfor %}
+{% endblock content %}

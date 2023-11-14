@@ -1,0 +1,39 @@
+
+{% extends "homepage.html" %}
+{% block content %}
+
+<div style="width:800px;?border-width:50px;">
+		<a class="dropdown-item" href="/booking/{{email}}/" style ="background-color:#85ABBC;width:100px;height:100px;display:inline;color:#FDFDFD;">booking list</a>
+		<a class="dropdown-item" href="/chooseCarList/{{email}}/" style ="background-color:#B0C9CD;width:100px;height:100px;display:inline;color:#FDFDFD;">car</a>
+		<a class="dropdown-item" href="/chooseTruckList/{{email}}/" style ="background-color:#B0C9CD;width:100px;height:100px;display:inline;color:#FDFDFD;">pickup truck</a>
+</div>
+
+
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+    <div class="col-md-12">
+    <h2><p class="article-title">booking</p></h2>
+    </div>
+    {% for v in posts %}
+     <div class="col-md-12">
+        <article class="media content-section">
+          <div class="media-body">
+          <div class="article-metadata">
+            <p class="article-title">{{ v.start_date }} &nbsp;&nbsp;&nbsp; ~ &nbsp;&nbsp;&nbsp;  {{ v.end_date }}</p>
+        </div>
+        <div style = "float:right;">
+            <a class="dropdown-item"  href="/booking/delete/{{email}}/{{v.booking_id}}/" style ="background-color:#8E624F;width:95px;height:35px;color:#FDFDFD;border-radius: 30%;">delete</a>
+          </div>
+            <h2><p class="article-title">$ {{v.amount_fee}}</p></h2>
+            <p class="article-content">{{ v.v_id }} </p>
+          </div>
+        </article>
+    </div>
+    {% endfor %}
+    <div style="width:800px;?border-width:65px;text-align:center; ">
+    		<a class="dropdown-item"  href="/chooseCarList/{{email}}/" style ="background-color:#B0C9CD;width:125px;height:35px;color:#FDFDFD;border-radius: 20%;display:inline;">rent car</a>
+    		<a class="dropdown-item"  href="/chooseTruckList/{{email}}/" style ="background-color:#B0C9CD;width:125px;height:35px;color:#FDFDFD;border-radius: 20%;display:inline;">rent truck</a>
+    </div>
+
+{% endblock content %}
+
+
